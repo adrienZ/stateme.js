@@ -1,0 +1,21 @@
+{
+  "name": "stalker.js",
+  "version": "0.0.1",
+  "description": "super tiny reactive state inspired by Vue.js",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "dadz"
+  },
+  "keywords": [
+    "react",
+    "vue",
+    "reactivity",
+    "javascript",
+    "stalker.js"
+  ],
+  "author": "Adrien Zaganelli <adrienzaganelli@gmail.com> (http://adrienzaganelli.com/)",
+}
