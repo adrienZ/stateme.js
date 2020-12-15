@@ -1,17 +1,17 @@
-# Stalker.js
+# stateme.js
 
 super tiny reactive state inspired by Vue.js
 
 ### Installation
 
 ```
-npm install stalker.js
+npm install stateme.js
 ```
 
 ### Usage
 
 ```javascript
-import watch from 'stalker.js'
+import watch from 'stateme.js'
 
 const myCounterProps = {
   enabled: true,
@@ -33,7 +33,7 @@ state.count++
 
 #### watch
 
-Returns an instace of stalker.js, not your original object
+Returns an instace of stateme.js, not your original object
 
 | Params         | Description |
 | ------         | ----------- |

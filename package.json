@@ -1,5 +1,5 @@
 {
-  "name": "stalker.js",
+  "name": "stateme.js",
   "version": "0.0.1",
   "description": "super tiny reactive state inspired by Vue.js",
   "main": "index.js",
@@ -8,14 +8,15 @@
   },
   "repository": {
     "type": "git",
-    "url": "dadz"
+    "url": "https://github.com/adrienZ/stateme.js"
   },
+  "homepage": "https://adrienz.github.io/stateme.js/",
   "keywords": [
     "react",
     "vue",
     "reactivity",
     "javascript",
-    "stalker.js"
+    "stateme.js"
   ],
-  "author": "Adrien Zaganelli <adrienzaganelli@gmail.com> (http://adrienzaganelli.com/)",
+  "author": "Adrien Zaganelli (https://adrienzaganelli.com/)"
 }
