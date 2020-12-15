@@ -25,7 +25,7 @@ const state = watch(myCounterProps, [ 'count' ])
 state.onUpdate(prop => console.log(`UPDATED { ${prop}: ${state[prop]} }`))
 
 state.count++
-// output: UPDATED { count: 1Ò }
+// output: UPDATED { count: 1 }
 ```
 
 
@@ -33,11 +33,11 @@ state.count++
 
 #### watch
 
-Returns an instace of stateme.js, not your original object
+Returns an instance of stateme.js, not your original object
 
 | Params         | Description |
 | ------         | ----------- |
-| originObject   | The object you want to watch. default: `{}`                        |
+| originalObject   | The object you want to watch. default: `{}`                        |
 | selectedProps  | **Optional**. Only watch the properties in an array. default: `[]` |
 
 #### Methods
