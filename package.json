@@ -1,6 +1,6 @@
 {
   "name": "stateme.js",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "super tiny reactive state inspired by Vue.js",
   "main": "./src/index.js",
   "scripts": {
