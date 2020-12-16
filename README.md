@@ -8,6 +8,12 @@ super tiny reactive state inspired by Vue.js
 npm install stateme.js
 ```
 
+or via CDN:
+
+```html
+<script src="https://unpkg.com/stateme.js/lib/stateme.js"></script>
+```
+
 ### Usage
 
 ```javascript
