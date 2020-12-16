@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Demo</title>
+</head>
+
+<body>
+  <script src="lib/stateme.js"></script>
+
+  <script>
+    const myCounterProps = {
+      enabled: true,
+      count: 0,
+      title: "My Pomodoro Timer"
+    }
+
+    // only watch the count prop
+    const state = watch(myCounterProps, ['count'])
+
+    state.onUpdate(prop => console.log(`UPDATED { ${prop}: ${state[prop]} }`))
+
+    state.count++
+    // output: UPDATED { count: 1 }
+  </script>
+</body>
+
+</html>

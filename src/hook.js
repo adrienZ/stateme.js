@@ -39,6 +39,6 @@ export function exportHooks() {
   return [...arguments].map(hook => hook.bind)
 }
 
-export function destroy() {
+export function destroyHooks() {
   return [...arguments].map(hook => hook.reset())
 }

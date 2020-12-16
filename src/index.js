@@ -1,4 +1,4 @@
-import createHook, { exportHooks } from './hook'
+import createHook, { exportHooks, destroyHooks } from './hook'
 
 function watch(originalObject = {}, selectedProps = []) {
   const instance = {}
@@ -20,10 +20,7 @@ function watch(originalObject = {}, selectedProps = []) {
   // methods
   const destroy = () => {
     _props.forEach(name => $destroy.run(name))
-
-    $beforeUpdate.reset()
-    $updated.reset()
-    $destroy.reset()
+    destroyHooks($beforeUpdate, $updated, $destroy)
   }
 
   const _proxy = _props.reduce((acc, key) => {

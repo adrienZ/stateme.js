@@ -1,10 +1,14 @@
 {
   "name": "stateme.js",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "super tiny reactive state inspired by Vue.js",
-  "main": "index.js",
+  "main": "./src/index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "npx webpack -w --mode=development --progress --color",
+    "build": "npx webpack --env prod --mode=production  --progress --color",
+    "build:analyze": "npx webpack --env prod --mode=production --progress --color --analyze",
+    "prepublish": "npm run build"
   },
   "repository": {
     "type": "git",
@@ -18,5 +22,13 @@
     "javascript",
     "stateme.js"
   ],
-  "author": "Adrien Zaganelli (https://adrienzaganelli.com/)"
+  "author": "Adrien Zaganelli (https://adrienzaganelli.com/)",
+  "devDependencies": {
+    "@babel/core": "^7.12.10",
+    "@babel/preset-env": "^7.12.11",
+    "babel-loader": "^8.2.2",
+    "core-js": "^3.8.1",
+    "webpack": "^5.10.3",
+    "webpack-cli": "^4.2.0"
+  }
 }
