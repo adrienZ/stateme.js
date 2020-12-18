@@ -62,6 +62,10 @@ usage:
 state.connectInput(document.querySelector('input'), ['count'])
 ```
 
+| Params         | Description |
+| ------         | ----------- |
+| input          | DOM element, the view that will update the model (state)           |
+
 ##### `onBeforeUpdate`
 
 Add a callback to trigger before a value update
@@ -75,7 +79,7 @@ state.onBeforeUpdate(prop =>
 
 | Params         | Description |
 | ------         | ----------- |
-| func           | Your callback function          .                                   |
+| func           | Your callback function .                                           |
 | selectedProps  | **Optional**. Only watch the properties in an array. default: `[]` |
 
 ##### `onUpdate`
@@ -88,7 +92,7 @@ state.onUpdate(prop => console.log(`UPDATED { ${prop}: ${state[prop]} }`), ['cou
 
 | Params         | Description |
 | ------         | ----------- |
-| func           | Your callback function          .                                   |
+| func           | Your callback function.                                            |
 | selectedProps  | **Optional**. Only watch the properties in an array. default: `[]` |
 
 ##### `onDestroy`
@@ -103,7 +107,7 @@ Add a callback to trigger when you call the `destory()` method.
 
 | Params         | Description |
 | ------         | ----------- |
-| func           | Your callback function          .                                   |
+| func           | Your callback function.                                            |
 | selectedProps  | **Optional**. Only watch the properties in an array. default: `[]` |
 
 ##### `destroy`

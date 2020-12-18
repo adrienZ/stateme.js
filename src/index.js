@@ -50,15 +50,11 @@ function watch(originalObject = {}, selectedProps = []) {
     const inputController = inputHandler.apply({ _ref, onSet }, [input])
     props.forEach(key => {
       // the $input hook run during onSet() to update the view (input)
-      $input.bind(inputController.set.bind(undefined, key), [key])
+      const setter = inputController.set.bind(undefined, key)
+      $input.bind(setter, [key])
 
-      // DOM events
-      const catchValue = e => {
-        inputController.onEvent(e, key)
-      }
-
-      input.addEventListener('input', catchValue)
-      input.addEventListener('change', catchValue)
+      // sync the view onEvent
+      inputController.syncPropertyView(key)
     })
   }
 

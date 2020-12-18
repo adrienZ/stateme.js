@@ -1,10 +1,10 @@
 import { isDOM } from './utils'
 
-function inputHandler(originalObject) {
-  if (!isDOM(originalObject)) return false
+function inputHandler(input) {
+  if (!isDOM(input)) return false
 
   // determine the object is a DOM input
-  const type = Object.getPrototypeOf(originalObject)
+  const type = Object.getPrototypeOf(input)
     .toString()
     .replace('[object ', '')
     .slice(0, -1)
@@ -37,7 +37,6 @@ function inputHandler(originalObject) {
 
   // setter
   const set = key => {
-    const input = originalObject
     const { _ref } = this
 
     switch (input.type) {
@@ -83,10 +82,33 @@ function inputHandler(originalObject) {
     }
   }
 
+  const syncPropertyView = key => {
+    const catchValue = e => {
+      onEvent(e, key)
+    }
+
+    let views = [input]
+    if (input.type === 'radio' && input.name) {
+      const root = input.form || document
+      // select value + name if possible, fallback to argument input
+      views = Array.from(
+        root.querySelectorAll(
+          `input[type="${input.type}"][name="${input.name}"]`
+        )
+      )
+    }
+
+    views.forEach(element => {
+      element.addEventListener('input', catchValue)
+      element.addEventListener('change', catchValue)
+    })
+  }
+
   return {
     descriptor,
     onEvent,
     set,
+    syncPropertyView,
   }
 }
 
