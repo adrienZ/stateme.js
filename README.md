@@ -2,7 +2,7 @@
 
 super tiny reactive state inspired by Vue.js
 
-[demo](demo.html)
+[demo](https://adrienz.github.io/stateme.js/demo.html) - [repo](https://github.com/adrienZ/stateme.js)
 
 ### Installation
 
