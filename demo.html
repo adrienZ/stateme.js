@@ -5,25 +5,300 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Demo</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/prismjs@1.22.0/themes/prism.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/prismjs@1.22.0/themes/prism-okaidia.css">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+    integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 </head>
 
 <body>
+
+
+
+
+  <div class="container mt-5">
+    <div class="row">
+      <div class="col-lg-7 col-md-6">
+        <div class="row">
+          <div class="col-lg-12">
+            <div class="page-header">
+              <h1 id="forms">Forms</h1>
+            </div>
+          </div>
+        </div>
+
+        <form class="row">
+          <div class="col-lg-4">
+            <div class="bs-component">
+              <fieldset>
+                <div class="form-group">
+                  <label for="select">Select input</label>
+                  <select class="form-control" id="select">
+                    <option value="fr">French</option>
+                    <option value="en">English</option>
+                    <option value="it">Italian</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label for="multi-select">Multiple select input</label>
+                  <select multiple="" class="form-control" id="multi-select">
+                    <option>1</option>
+                    <option>2</option>
+                    <option value="hello">3</option>
+                    <option>4</option>
+                    <option>5</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label class="col-form-label" for="image">Checkboxes</label>
+                  <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="" id="checkbox1">
+                    <label class="form-check-label" for="checkbox1">
+                      Default checkbox
+                    </label>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="col-form-label" for="image">Radios</label>
+                  <div class="form-check">
+                    <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option1">
+                    <label class="form-check-label" for="exampleRadios1">
+                      Default radio
+                    </label>
+                  </div>
+                  <div class="form-check">
+                    <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="option2">
+                    <label class="form-check-label" for="exampleRadios2">
+                      Second radio
+                    </label>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="textarea">Textarea input</label>
+                  <textarea style="resize: none" class="form-control" id="textarea" rows="3"></textarea>
+                </div>
+              </fieldset>
+              <fieldset class="form-group">
+                <label for="range">Range input</label>
+                <input type="range" class="custom-range" id="range">
+              </fieldset>
+              <div class="form-group">
+                <label class="col-form-label" for="image">File input</label>
+                <input type="file" class="form-control" id="file">
+              </div>
+              <div class="form-group">
+                <label class="col-form-label" for="image">Hidden input</label>
+                <input type="hidden" class="form-control" id="hidden">
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-4">
+            <div class="form-group">
+              <label class="col-form-label" for="text">Text input</label>
+              <input type="text" class="form-control" placeholder="Default input" id="text">
+            </div>
+            <div class="form-group">
+              <label class="col-form-label" for="text">Color input</label>
+              <input type="color" class="form-control" id="color">
+            </div>
+            <div class="form-group">
+              <label class="col-form-label" for="text">Number input</label>
+              <input type="number" class="form-control" id="number">
+            </div>
+            <div class="form-group">
+              <label class="col-form-label" for="text">Tel input</label>
+              <input type="tel" class="form-control" id="tel">
+            </div>
+            <div class="form-group">
+              <label class="col-form-label" for="text">Url input</label>
+              <input type="url" class="form-control" id="url">
+            </div>
+            <div class="form-group">
+              <label class="col-form-label" for="text">Search input</label>
+              <input type="search" class="form-control" id="search">
+            </div>
+            <div class="form-group">
+              <label class="col-form-label" for="text">Email input</label>
+              <input type="email" class="form-control" id="email">
+            </div>
+            <div class="form-group">
+              <label class="col-form-label" for="image">Reset input</label>
+              <input type="reset" class="form-control" id="reset">
+            </div>
+          </div>
+          <div class="col-lg-4">
+            <div class="form-group">
+              <label class="col-form-label" for="text">Date input</label>
+              <input type="date" class="form-control" id="date">
+            </div>
+            <div class="form-group">
+              <label class="col-form-label" for="text">Datetime local input</label>
+              <input type="datetime-local" class="form-control" id="datetime-local">
+            </div>
+            <div class="form-group">
+              <label class="col-form-label" for="text">Month input</label>
+              <input type="month" class="form-control" id="month">
+            </div>
+            <div class="form-group">
+              <label class="col-form-label" for="text">Week input</label>
+              <input type="week" class="form-control" id="week">
+            </div>
+            <div class="form-group">
+              <label class="col-form-label" for="time">Time input</label>
+              <input type="time" class="form-control" id="time">
+            </div>
+            <div class="form-group">
+              <label class="col-form-label" for="password">Password input</label>
+              <input type="password" class="form-control" id="password">
+            </div>
+            <div class="form-group">
+              <label class="col-form-label" for="image">Image input</label>
+              <input type="image" class="form-control" id="image">
+            </div>
+            <div class="form-group">
+              <label class="col-form-label" for="image">Button input</label>
+              <input type="button" class="form-control" id="button">
+            </div>
+            <div class="form-group">
+              <label class="col-form-label" for="image">Submit input</label>
+              <input type="submit" class="form-control" id="submit">
+            </div>
+          </div>
+        </form>
+
+        <h3>Source code</h3>
+        <pre><code id="sourcePreview" class="language-javascript"></code></pre>
+      </div>
+
+      <div class="col-lg-5 col-md-6">
+        <h3>Current state (editable)</h3>
+        <div id="dump">
+          <pre contenteditable class="language-javascript" id="editable"></pre>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.22.0/prism.min.js"
+    integrity="sha512-9+422Bs3A87UkWfp+qV80Nfv9arhbCXKY1rxrF2seorI36mIIstMiuBfyKLF1yH1nnzQkEWq2xrzT4XU3Z+vrA=="
+    crossorigin="anonymous"></script>
   <script src="lib/stateme.js"></script>
 
-  <script>
-    const myCounterProps = {
-      enabled: true,
-      count: 0,
-      title: "My Pomodoro Timer"
+  <script id="sourceCode">
+    // selectors and data test
+    const DOM = {
+      "#button": "My button label",
+      "#checkbox1": true,
+      "#color": "#f000f0",
+      "#date": "2020-12-11",
+      "#datetime-local": "2020-12-27T02:57",
+      "#email": "test@test.test",
+      "#exampleRadios": "option2",
+      "#file": "",
+      "#hidden": "My hidden value",
+      "#image": "https://developer.mozilla.org/static/img/opengraph-logo.72382e605ce3.png",
+      "#month": "2020-12",
+      "#multi-select": ["2"],
+      "#number": "42",
+      "#password": "secret",
+      "#range": "50",
+      "#reset": "My reset label",
+      "#search": "My query",
+      "#select": "en",
+      "#submit": "My submit label",
+      "#tel": "123-456-7890",
+      "#text": "my text",
+      "#textarea": "my textarea",
+      "#time": "11:30",
+      "#url": "https://developer.mozilla.org/fr/docs/Web",
+      "#week": "2020-W53",
     }
 
-    // only watch the count prop
-    const state = watch(myCounterProps, ['count'])
+    // use the library HERE
+    const state = watch(DOM)
 
-    state.onUpdate(prop => console.log(`UPDATED { ${prop}: ${state[prop]} }`))
+    // two way bidings with inputs
+    Object.keys(DOM).forEach(name => {
+      // get radio by name
+      const node = name === "#exampleRadios"
+      ? document.querySelector(`[name="${name.slice(1)}"]`)
+      : document.querySelector(name)
 
-    state.count++
-    // output: UPDATED { count: 1 }
+      // two-way data binding with input
+      state.connectInput(node, [name])
+
+      state.onUpdate(prop => {
+        console.log(`UPDATE=>${prop}: ${state[prop]}`)
+      }, [name])
+    })
+  </script>
+
+  <script>
+    const editable = document.getElementById('editable')
+    const wrapper = document.getElementById('dump')
+    document.getElementById('sourcePreview').innerHTML = document.getElementById('sourceCode').innerHTML
+    console.warn("STATE UPDATED FROM EXTERNAL SCRIPT FOR STATE PREVIEW")
+
+    Object.keys(DOM).forEach(name => {
+
+      state.onUpdate(prop => {
+        if (document.activeElement !== editable) {
+
+          const dumpState = Object.getOwnPropertyNames(state)
+            // remove enumerables properties
+            .filter(propName => !Object.keys(state).includes(propName))
+            // get object
+            .reduce((acc, key) => {
+              return {
+                ...acc,
+                [key]: state[key]
+              }
+            }, {})
+          editable.innerHTML = JSON.stringify(dumpState, null, 4)
+          Prism.highlightElement(editable)
+        }
+
+      }, [name])
+
+      state[name] = DOM[name]
+    })
+
+
+    function updateFromDump() {
+      const str = "" + editable.innerText
+
+      try {
+        const data = JSON.parse(str);
+        for (const key in data) {
+          state[key] = data[key]
+        }
+      } catch (err) {
+        alert('can\'t parse json');
+      }
+    }
+    editable.addEventListener('input', updateFromDump)
   </script>
 </body>
 

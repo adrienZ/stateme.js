@@ -2,6 +2,8 @@
 
 super tiny reactive state inspired by Vue.js
 
+[demo](demo.html)
+
 ### Installation
 
 ```
@@ -47,6 +49,18 @@ Returns an instance of stateme.js, not your original object
 | selectedProps  | **Optional**. Only watch the properties in an array. default: `[]` |
 
 #### Methods
+
+##### `connectInput`
+
+Connect you reactive value to a DOM input (watch changes).
+
+**WARNING**: for `radio` inputs, provide an element with a `name` atribute. when you set your state, provide the radio option value (like you do for a `<select>`).
+> learn more on the [demo](demo.html)
+
+usage:
+```javascript
+state.connectInput(document.querySelector('input'), ['count'])
+```
 
 ##### `onBeforeUpdate`
 
