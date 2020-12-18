@@ -7,16 +7,26 @@
   <title>Demo</title>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/prismjs@1.22.0/themes/prism.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/prismjs@1.22.0/themes/prism-okaidia.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.6.0/plugins/line-highlight/prism-line-highlight.min.css" integrity="sha512-1CQC4HXtU0rddU3oK9xuYds6k4iMjfTB3a+EHo+47fFl4XQq/HuqOPq+3SEnH5UkPGgE07K7Qvr4KbC1ZWZaEg==" crossorigin="anonymous" />
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
     integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/prismjs@1.22.0/plugins/line-numbers/prism-line-numbers.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/prismjs@1.22.0/plugins/toolbar/prism-toolbar.css">
 </head>
 
 <body>
 
+  <style>
+    .line-highlight {
+      background: rgba(166, 226, 46, 0.5);
+    background: linear-gradient(to right,rgba(166, 226, 46, 0.5) 70%,rgba(166, 226, 46, 0.3));
+
+    }
+  </style>
 
 
 
-  <div class="container mt-5">
+  <div class="container line-numbers mt-5">
     <div class="row">
       <div class="col-lg-7 col-md-6">
         <div class="row">
@@ -173,7 +183,7 @@
       <div class="col-lg-5 col-md-6">
         <h3>Current state (editable)</h3>
         <div id="dump">
-          <pre contenteditable class="language-javascript" id="editable"></pre>
+          <pre contenteditable  id="editable"><code id="editableCode" class="language-javascript"></code></pre>
         </div>
       </div>
     </div>
@@ -204,6 +214,11 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.22.0/prism.min.js"
     integrity="sha512-9+422Bs3A87UkWfp+qV80Nfv9arhbCXKY1rxrF2seorI36mIIstMiuBfyKLF1yH1nnzQkEWq2xrzT4XU3Z+vrA=="
     crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.6.0/plugins/line-highlight/prism-line-highlight.min.js" integrity="sha512-Nyxi7KiZ7CFVpLcpEC/HeLFADL/VpMIVrE7ZXRQSrZXI/US2OBOpRNKVwHSxc3qy18SKM3bhaivx+m0xOEP7Hw==" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/prismjs@1.22.0/plugins/line-numbers/prism-line-numbers.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/prismjs@1.22.0/plugins/toolbar/prism-toolbar.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/prismjs@1.22.0/plugins/copy-to-clipboard/prism-copy-to-clipboard.min.js"></script>
+
   <script src="lib/stateme.js"></script>
 
   <script id="sourceCode">
@@ -257,6 +272,7 @@
 
   <script>
     const editable = document.getElementById('editable')
+    const editableCode = document.getElementById('editableCode')
     const wrapper = document.getElementById('dump')
     document.getElementById('sourcePreview').innerHTML = document.getElementById('sourceCode').innerHTML
     console.warn("STATE UPDATED FROM EXTERNAL SCRIPT FOR STATE PREVIEW")
@@ -266,24 +282,32 @@
       state.onUpdate(prop => {
         if (document.activeElement !== editable) {
 
+
           const dumpState = Object.getOwnPropertyNames(state)
             // remove enumerables properties
             .filter(propName => !Object.keys(state).includes(propName))
             // get object
-            .reduce((acc, key) => {
+            .reduce((acc, key, index) => {
               return {
                 ...acc,
                 [key]: state[key]
               }
             }, {})
-          editable.innerHTML = JSON.stringify(dumpState, null, 4)
-          Prism.highlightElement(editable)
+
+          const dumpStr = JSON.stringify(dumpState, null, 4)
+          const lineIndex = dumpStr.split('\n').findIndex( line => line.indexOf(`"${prop}"`) !== -1)
+
+
+          editable.setAttribute('data-line', lineIndex + 1)
+          editableCode.innerHTML = dumpStr
+          Prism.highlightElement(editableCode)
         }
 
       }, [name])
 
       state[name] = DOM[name]
     })
+    console.clear()
 
 
     function updateFromDump() {
