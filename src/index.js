@@ -32,13 +32,33 @@ function watch(originalObject = {}, selectedProps = []) {
     destroyHooks($beforeUpdate, $updated, $destroy)
   }
 
+  // core setter
+  function onSet(key, value) {
+    // beforeUpdate hook callbacks for the prop
+    $beforeUpdate.run(key)
+    // the TRVE setter
+    _ref[key] = value
+    // input DOM setter
+    $input.run(key, value)
+    // update hook callbacks for the prop
+    $updated.run(key)
+  }
+
   // HANDLE DOM INPUT
   function connectInput(input, props = []) {
-    const inputController = inputHandler.apply({ instance, _ref }, [input])
+    // create input controller and send data from the instance
+    const inputController = inputHandler.apply({ _ref, onSet }, [input])
     props.forEach(key => {
+      // the $input hook run during onSet() to update the view (input)
       $input.bind(inputController.set.bind(undefined, key), [key])
-      input.addEventListener('input', e => inputController.get(e, key))
-      input.addEventListener('change', e => inputController.get(e, key))
+
+      // DOM events
+      const catchValue = e => {
+        inputController.onEvent(e, key)
+      }
+
+      input.addEventListener('input', catchValue)
+      input.addEventListener('change', catchValue)
     })
   }
 
@@ -47,14 +67,7 @@ function watch(originalObject = {}, selectedProps = []) {
     // getter/setter point to _ref, we can add logic in setter
     acc[key] = {
       set(value) {
-        // beforeUpdate hook callbacks for the prop
-        $beforeUpdate.run(key)
-        // the TRVE setter
-        _ref[key] = value
-        // input DOM setter
-        $input.run(key, value)
-        // update hook callbacks for the prop
-        $updated.run(key)
+        onSet(key, value)
       },
 
       get() {
@@ -71,7 +84,7 @@ function watch(originalObject = {}, selectedProps = []) {
   }
 
   // apply getters/setters
-  Object.defineProperties(instance, _proxy)
+  Object.defineProperties(instance, _proxy, onSet)
 
   // public api
   const [onBeforeUpdate, onUpdate, onDestroy] = exportHooks(

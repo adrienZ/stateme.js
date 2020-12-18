@@ -16,7 +16,7 @@ function inputHandler(originalObject) {
   )
 
   // getter
-  const get = (e, key) => {
+  const onEvent = (e, key) => {
     const input = e.target
     let value = input.value
 
@@ -29,7 +29,10 @@ function inputHandler(originalObject) {
         break
     }
 
-    this.instance[key] = value
+    if (this._ref[key] !== value) {
+      // prevent double mutation (input event + change event)
+      this.onSet(key, value)
+    }
   }
 
   // setter
@@ -41,7 +44,7 @@ function inputHandler(originalObject) {
       // select-multiple cannot be programmatically set with multiple values
       case 'select-multiple':
         Array.from(input.options).forEach(option => {
-          // turn instance values into string to match DOM values
+          // turn _ref values into string to match DOM values
           if (_ref[key].map(value => value + '').includes(option.value)) {
             // set via dom
             option.selected = true
@@ -82,7 +85,7 @@ function inputHandler(originalObject) {
 
   return {
     descriptor,
-    get,
+    onEvent,
     set,
   }
 }
